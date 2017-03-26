@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Texts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Text</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for text in texts %}
+            <tr>
+                <td><a href="{{ path('text_show', { 'id': text.id }) }}">{{ text.id }}</a></td>
+                <td>{{ text.title }}</td>
+                <td>{{ text.author }}</td>
+                <td>{{ text.text }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('text_show', { 'id': text.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('text_edit', { 'id': text.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('text_new') }}">Create a new text</a>
+        </li>
+    </ul>
+{% endblock %}

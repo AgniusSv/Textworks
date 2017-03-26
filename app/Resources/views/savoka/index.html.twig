@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Savokas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for savoka in savokas %}
+            <tr>
+                <td><a href="{{ path('savoka_show', { 'id': savoka.id }) }}">{{ savoka.id }}</a></td>
+                <td>{{ savoka.type }}</td>
+                <td>{{ savoka.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('savoka_show', { 'id': savoka.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('savoka_edit', { 'id': savoka.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('savoka_new') }}">Create a new savoka</a>
+        </li>
+    </ul>
+{% endblock %}
